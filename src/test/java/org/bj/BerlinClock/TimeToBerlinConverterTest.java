@@ -13,38 +13,53 @@ public class TimeToBerlinConverterTest {
     private TimeToBerlinConverter converter;
 
     @Test
-    public void convert_0_00h()throws Exception {
+    public void convert_00h00h00s()throws Exception {
         converter = new TimeToBerlinConverter(0,0,0);
-        String[] result = {"0000", "0000", "00000000000", "0000", "0"};
+        String[] result = {"0000", "0000", "00000000000", "0000", "1"};
         assertThat(converter.convert(), is(result));
     }
 
 
     @Test
-    public void convert_10h00m()throws Exception {
+    public void convert_10h00m00s()throws Exception {
         converter = new TimeToBerlinConverter(10,0,0);
-        String[] result = {"1100", "0000", "00000000000", "0000", "0"};
+        String[] result = {"1100", "0000", "00000000000", "0000", "1"};
         assertThat(converter.convert(), is(result));
     }
 
     @Test
-    public void convert_20h00m()throws Exception {
+    public void convert_20h00m00s()throws Exception {
         converter = new TimeToBerlinConverter(20,0,0);
-        String[] result = {"1111", "0000", "00000000000", "0000", "0"};
+        String[] result = {"1111", "0000", "00000000000", "0000", "1"};
         assertThat(converter.convert(), is(result));
     }
 
     @Test
-    public void convert_23h_15m()throws Exception {
+    public void convert_23h_15m00s()throws Exception {
         converter = new TimeToBerlinConverter(23,15,0);
-        String[] result = {"1111", "1110", "11100000000", "0000", "0"};
+        String[] result = {"1111", "1110", "11100000000", "0000", "1"};
         assertThat(converter.convert(), is(result));
     }
 
     @Test
-    public void convert_12h_08m()throws Exception {
+    public void convert_12h_08m00s()throws Exception {
         converter = new TimeToBerlinConverter(12,8,0);
-        String[] result = {"1100", "1100", "10000000000", "1110", "0"};
+        String[] result = {"1100", "1100", "10000000000", "1110", "1"};
+        assertThat(converter.convert(), is(result));
+    }
+
+    @Test
+    public void convert_16h_56m_32s()throws Exception {
+        converter = new TimeToBerlinConverter(16,56,32);
+        String[] result = {"1110", "1000", "11111111111", "1000", "1"};
+        assertThat(converter.convert(), is(result));
+    }
+
+
+    @Test
+    public void convert_17h_31m_01s()throws Exception {
+        converter = new TimeToBerlinConverter(17,31,1);
+        String[] result = {"1110", "1100", "11111100000", "1000", "0"};
         assertThat(converter.convert(), is(result));
     }
 }

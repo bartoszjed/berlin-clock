@@ -47,7 +47,7 @@ public class TimeToBerlinConverter {
         result[1] = paddedString(numberDivider(timeToConvert.getHour()%5,1),"0", 4);
         result[2] = paddedString(numberDivider(timeToConvert.getMinute(), 5),"0", 11);
         result[3] = paddedString(numberDivider(timeToConvert.getMinute()%5, 1),"0", 4);
-        result[4] = paddedString(numberDivider(timeToConvert.getSecond(),2),"0", 1);
+        result[4] = ( (timeToConvert.getSecond())%2==0?"1":"0");
 
 
         return result;
