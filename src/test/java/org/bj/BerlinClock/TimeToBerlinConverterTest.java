@@ -69,7 +69,7 @@ public class TimeToBerlinConverterTest {
         String[] expectedTime = {"1110", "1100", "11111100000", "1000", "0"};
         String[] resultTime = converter.convertTime();
         String[] colourPattern = {"R","R","Y","R","Y","Y"}; //5h, 1h, 5min, 15min, sec
-        String[] expectedResult = {"RRR0", "RR00", "YYRYYR00000", "Y000", "Y"};
+        String[] expectedResult = {"RRR0", "RR00", "YYRYYR00000", "Y000", "0"};
         assertThat(converter.applyColours(resultTime, colourPattern), is(expectedResult));
     }
 }
