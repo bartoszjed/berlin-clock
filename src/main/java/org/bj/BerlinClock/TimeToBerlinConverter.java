@@ -35,9 +35,7 @@ public class TimeToBerlinConverter {
        return result;
     }
 
-    String[] convert() {
-        //localTime = LocalTime.of(22, 33); //10:33 PM
-        //localTime = LocalTime.ofSecondOfDay(4503); // The 4,503 second in a day (1:15:30 AM)
+    String[] convertTime() {
         String[] result = {"0000", "0000", "00000000000", "0000", "0"};
         int hours = timeToConvert.getHour();
         int minutes = timeToConvert.getMinute();
@@ -47,11 +45,34 @@ public class TimeToBerlinConverter {
         result[1] = paddedString(numberDivider(timeToConvert.getHour()%5,1),"0", 4);
         result[2] = paddedString(numberDivider(timeToConvert.getMinute(), 5),"0", 11);
         result[3] = paddedString(numberDivider(timeToConvert.getMinute()%5, 1),"0", 4);
-        result[4] = ( (timeToConvert.getSecond())%2==0?"1":"0");
-
+        result[4] = ( (timeToConvert.getSecond() )%2==0?"1":"0");
 
         return result;
     }
 
 
+    String[] applyColours(String[] berlinTime, String[] colourPattern) {
+
+        // String[] colourPattern = {"R","R","Y","R","Y","Y"}; //5h, 1h, 5min, 15min, 1min, sec
+
+        String[] result = berlinTime;
+        // row 1: 5h
+        result[0] = berlinTime[0].replace("1",colourPattern[0]);
+
+        // row 2: 1h
+        result[1] = berlinTime[1].replace("1",colourPattern[1]);
+
+        // row 3: 5 mins / 15 mins
+        //currentVal = (i%3==0?currentVal.replace("1","R"):currentVal.replace("1",colour));
+        result[2] = berlinTime[2].replace("1",colourPattern[2]);
+
+        // row 4: 1 min
+        result[3] = berlinTime[3].replace("1",colourPattern[3]);
+
+        // row 0: 1 sec
+        result[4] = berlinTime[4].replace("1",colourPattern[5]);
+
+
+        return result;
+    }
 }
