@@ -1,5 +1,6 @@
 package org.bj.BerlinClock;
 
+import java.io.Console;
 import java.util.Arrays;
 
 /**
@@ -8,7 +9,6 @@ import java.util.Arrays;
 
 class ClockRenderer{
 
-    //Console console = new Console();
     private static String NEW_LINE = System.getProperty("line.separator");
     private static char TOP_LEFT_CORNER = '\u2554';
     private static char TOP_RIGHT_CORNER = '\u2557';
@@ -18,14 +18,13 @@ class ClockRenderer{
     private static char VERTICAL_BORDER = '\u2551';
 
 
-    ClockRenderer (String[] berlinerTime){
-        System.out.println(circleLight(berlinerTime[4]));
+    ClockRenderer (Console console, String[] berlinerTime){
 
-        System.out.println(rowOfLights(berlinerTime[0]));
-        System.out.println(rowOfLights(berlinerTime[1]));
-        System.out.println(rowOfLights(berlinerTime[2]));
-        System.out.println(rowOfLights(berlinerTime[3]));
-
+        console.writer().println(circleLight(berlinerTime[4]));
+        console.writer().println(rowOfLights(berlinerTime[0]));
+        console.writer().println(rowOfLights(berlinerTime[1]));
+        console.writer().println(rowOfLights(berlinerTime[2]));
+        console.writer().println(rowOfLights(berlinerTime[3]));
     }
 
     private String rowOfLights(String values){
