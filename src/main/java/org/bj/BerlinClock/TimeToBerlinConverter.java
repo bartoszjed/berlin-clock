@@ -17,6 +17,10 @@ class TimeToBerlinConverter {
         timeToConvert = LocalTime.of(hours, mins, secs);
     }
 
+    TimeToBerlinConverter(LocalTime timeEntered) {
+        this.timeToConvert = timeEntered;
+    }
+
     private String numberDivider(int numberIn, int divisor){
         String result = "";
         int numberOfDivisors = numberIn/divisor;
