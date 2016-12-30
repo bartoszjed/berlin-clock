@@ -72,4 +72,14 @@ public class TimeToBerlinConverterTest {
         String[] expectedResult = {"RRR0", "RR00", "YYRYYR00000", "Y000", "0"};
         assertThat(converter.applyColours(resultTime, colourPattern), is(expectedResult));
     }
+
+    @Test
+    public void verify_colourPattern_BBGBGG()throws Exception {
+        converter = new TimeToBerlinConverter(17,31,2);
+        //String[] expectedTime = {"1110", "1100", "11111100000", "1000", "0"};
+        String[] resultTime = converter.convertTime();
+        String[] colourPattern = {"B","B","G","B","G","R"}; //5h, 1h, 5min, 15min, sec
+        String[] expectedResult = {"BBB0", "BB00", "GGBGGB00000", "G000", "R"};
+        assertThat(converter.applyColours(resultTime, colourPattern), is(expectedResult));
+    }
 }
