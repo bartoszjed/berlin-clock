@@ -1,20 +1,18 @@
 package org.bj.BerlinClock;
 
 import java.io.Console;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
+import static java.lang.System.*;
 
 /**
  *
  */
 public class App {
 
-    private static Console console;
+    private static Console console = console();
 
     public static void main( String[] args ) {
 
-        console = System.console();
         String[] colourPattern = {"R","R","Y","R","Y","Y"}; //5h, 1h, 5min, 15min, 1min, sec
 
         LocalTime timeEntered = getUserInput();
