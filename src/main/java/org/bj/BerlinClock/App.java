@@ -27,25 +27,28 @@ public class App {
     }
 
     private static LocalTime getUserInput() {
-        console.writer().println ("Please specify time in format HH24:MI:SS e.g. 13:51:33, or hit ENTER for current time.");
-
-        LocalTime result = null;
+        LocalTime result = LocalTime.now();
+        Boolean success;
         String aLine;
-        //do {
+        do {
+            success = true;
+            console.writer().println ("Please specify time in format HH24:MI:SS e.g. 13:51:33, or hit ENTER for current time.");
             aLine = console.readLine();
 
             if(aLine.isEmpty()){
-                return LocalTime.now();
+                return result;
             }
 
             try {
                 result = LocalTime.parse(aLine);
             }
             catch (Exception e){
-                console.writer().println("Wrong tie entered, please try once more, or hit Enter for current time.");
+                success = false;
+                console.writer().println("Wrong time entered, please try once more.");
+                console.writer().println();
             }
-//        }
-        //while(result != null);
+        }
+        while(!success);
 
         return result;
     }
