@@ -1,6 +1,5 @@
 package org.bj.BerlinClock;
 
-import java.io.Console;
 import java.util.Arrays;
 
 /**
@@ -18,13 +17,13 @@ class ClockRenderer{
     private static char VERTICAL_BORDER = '\u2551';
 
 
-    ClockRenderer (Console console, String[] berlinerTime){
+    ClockRenderer (UserInterface ui, String[] berlinerTime){
 
-        console.writer().println(circleLight(berlinerTime[4]));
-        console.writer().println(rowOfLights(berlinerTime[0]));
-        console.writer().println(rowOfLights(berlinerTime[1]));
-        console.writer().println(rowOfLights(berlinerTime[2]));
-        console.writer().println(rowOfLights(berlinerTime[3]));
+        ui.printLine(circleLight(berlinerTime[4]));
+        ui.printLine(rowOfLights(berlinerTime[0]));
+        ui.printLine(rowOfLights(berlinerTime[1]));
+        ui.printLine(rowOfLights(berlinerTime[2]));
+        ui.printLine(rowOfLights(berlinerTime[3]));
     }
 
     private String rowOfLights(String values){
